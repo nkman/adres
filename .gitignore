@@ -2,3 +2,4 @@ config/config.json
 modify.json
 userdata.json
 elasticsearch-1.3.4/
+db_local.json
