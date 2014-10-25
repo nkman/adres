@@ -21,12 +21,19 @@ class Index
         @client.cluster.health
 
         @client.index index: 'mordor', 
-        type: 'rose', id: 1, 
-        body: { name: data["value"], enr: data["id"] }
+        type: 'rose',
+        body: { name: data[:name], enr: data[:enr] }
 
         @client.indices.refresh index: 'mordor'
 
-        # @client.search index: 'mordor', body: { query: { match: { title: 'test' } } }
+    end
+
+    def search()
+        result = @client.search index: 'mordor', 
+        type: 'rose',
+        q: "12114042"
+        puts result
+        return result["hits"]["hits"][0]["_source"]["name"]
     end
 
 end

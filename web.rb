@@ -26,13 +26,17 @@ get '/' do
 end
 
 get '/index' do
-	all_data = DB.get_all_data
-	all_data.each do |item|
-		indexer.index(item)
-	end
-	return "{\"Message\": \"Do that Manually !!\"}"
+    all_data = DB.get_all_data
+    all_data.each do |item|
+        indexer.index(item)
+    end
+    return "{\"Message\": \"Do that Manually !!\"}"
 end
 
 get '/insertion' do
     return "{\"Message\": \"Do that Manually !!\"}"
+end
+
+get '/search' do
+    return indexer.search
 end
