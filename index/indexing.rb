@@ -31,11 +31,19 @@ class Index
     def search()
         result = @client.search index: 'mordor', 
         type: 'rose',
-        q: "12114042"
+        q: "Abhishek"
         puts result
-        return result["hits"]["hits"][0]["_source"]["name"]
+        return JSON.generate(result["hits"]["hits"])
     end
 
+    def get_all_hits(query)
+        result = @client.search index: 'mordor', 
+        type: 'rose',
+        q: query
+
+        total_hits = result["hits"]["hits"]
+        return total_hits
+    end
 end
 
 

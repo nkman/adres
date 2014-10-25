@@ -28,6 +28,7 @@ GEM
     minitest (5.4.2)
     multi_json (1.10.1)
     multipart-post (2.0.0)
+    pg (0.17.1)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -47,5 +48,6 @@ PLATFORMS
 DEPENDENCIES
   elasticsearch-model
   elasticsearch-rails
+  pg
   sequel
   sinatra (= 1.4.5)

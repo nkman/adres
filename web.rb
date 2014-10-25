@@ -22,7 +22,14 @@ DB = Database.new(local_json)
 DB.connect
 
 get '/' do
-    return "Hello, world"
+    return erb :home
+end
+
+post '/process' do
+    q = params[:query]
+    hits = indexer.get_all_hits(q)
+    puts "Query is #{q}"
+    return erb :result, locals: {list: 'low'} 
 end
 
 get '/index' do
@@ -39,4 +46,10 @@ end
 
 get '/search' do
     return indexer.search
+end
+
+get '/populate' do
+    data = File.read('./data/modify.json')
+    data = JSON.parse(data)
+    DB.populate_db(data)
 end
