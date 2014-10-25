@@ -39,7 +39,7 @@ class Configure
     end
 
     def elasticsearch
-        elasticsearch_json = File.read(@elasticsearch)
+        elasticsearch_json = File.read(@elastic_config)
         obj = JSON.parse(elasticsearch_json)
         return obj
     end

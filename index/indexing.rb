@@ -17,22 +17,25 @@ class Index
 
     end
 
-    def index
+    def index(data)
         @client.cluster.health
 
         @client.index index: 'mordor', 
         type: 'rose', id: 1, 
-        body: { title: 'Test' }
+        body: { name: data["value"], enr: data["id"] }
 
         @client.indices.refresh index: 'mordor'
 
-        @client.search index: 'mordor', body: { query: { match: { title: 'test' } } }
+        # @client.search index: 'mordor', body: { query: { match: { title: 'test' } } }
     end
 
 end
 
+
+"""
 json = File.read('./../config/elasticsearch.json')
 obj = JSON.parse(json)
 index = Index.new(obj)
 index.connect
 index.index
+"""

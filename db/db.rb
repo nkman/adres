@@ -21,8 +21,8 @@ class Database
             :user=>@user, 
             :password=>@password
         )
-        puts @DB
-        puts "COnnected"
+        # puts @DB
+        puts "Connected to database !"
     end
 
     def create_db
@@ -54,6 +54,11 @@ class Database
                 :enr => _enr
             )
         end
+    end
+
+    def get_all_data()
+        all_data = @DB.fetch("SELECT * FROM data_container")
+        return all_data
     end
 
 end
