@@ -57,7 +57,8 @@ class Database
     end
 
 end
-	
+
+"""
 json = File.read('./../config/config.json')
 obj = JSON.parse(json)
 db = Database.new(obj)
@@ -67,3 +68,4 @@ db.create_db
 data = File.read('./../data/modify.json')
 data = JSON.parse(data)
 db.populate_db(data)
+"""
