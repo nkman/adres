@@ -28,8 +28,8 @@ end
 post '/process' do
     q = params[:query]
     hits = indexer.get_all_hits(q)
-    puts "Query is #{q}"
-    return erb :result, locals: {list: 'low'} 
+    puts "Query is \"#{q}\""
+    return erb :result, locals: {list: hits} 
 end
 
 get '/index' do

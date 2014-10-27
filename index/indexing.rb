@@ -22,7 +22,7 @@ class Index
 
         @client.index index: 'mordor', 
         type: 'rose',
-        body: { name: data[:name], enr: data[:enr] }
+        body: { name: data[:name], enr: data[:enr], label: data[:label] }
 
         @client.indices.refresh index: 'mordor'
 

@@ -12,8 +12,15 @@
     </head>
     <body>
         <div class="main">
-            <span>LOL</span>
-            <span> <%= list %></span>
+            <% list.each do |item| %>
+                <span><%= item["_source"]["name"] %></span>
+
+                <span><%= item["_source"]["enr"] %></span>
+
+                <span><%= item["_source"]["label"] %></span>
+
+                <br>
+            <% end %>
         </div>
     </body>
 </html>
