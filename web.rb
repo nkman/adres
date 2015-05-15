@@ -32,24 +32,24 @@ post '/process' do
     return erb :result, locals: {list: hits} 
 end
 
-get '/index' do
-    all_data = DB.get_all_data
-    all_data.each do |item|
-        indexer.index(item)
-    end
-    return "{\"Message\": \"Do that Manually !!\"}"
-end
+# get '/index' do
+#     all_data = DB.get_all_data
+#     all_data.each do |item|
+#         indexer.index(item)
+#     end
+#     return "{\"Message\": \"Do that Manually !!\"}"
+# end
 
-get '/insertion' do
-    return "{\"Message\": \"Do that Manually !!\"}"
-end
+# get '/insertion' do
+#     return "{\"Message\": \"Do that Manually !!\"}"
+# end
 
 get '/search' do
     return indexer.search
 end
 
-get '/populate' do
-    data = File.read('./data/modify.json')
-    data = JSON.parse(data)
-    DB.populate_db(data)
-end
+# get '/populate' do
+#     data = File.read('./data/modify.json')
+#     data = JSON.parse(data)
+#     DB.populate_db(data)
+# end

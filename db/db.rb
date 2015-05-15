@@ -10,6 +10,7 @@ class Database
         @password = config["password"]
         @port = config["port"]
         @database = config["database"]
+        @table = "local_data"
 
     end
 
@@ -26,16 +27,23 @@ class Database
     end
 
     def create_db
-        @DB.create_table? :data_container do
+        @DB.create_table? @table do
             primary_key :id
             String :name, :size=>100
             String :label, :size=>200
             String :enr, :size=>100
+
+            String :username_sds, :size=>30
+            String :uid_sds, :size=>10
+            String :course_sds, :size=>200
+            String :sec_sds, :size=>10
+            String :name_sds, :size=>100
+            Integer :year_sds
         end
     end
 
     def populate_db(data)
-        db = @DB[:data_container]
+        db = @DB[:local_data]
         data.each do |item|
 
             _label = item["label"]
@@ -57,20 +65,13 @@ class Database
     end
 
     def get_all_data()
-        all_data = @DB.fetch("SELECT * FROM data_container")
+        all_data = @DB.fetch("SELECT * FROM #{@table}")
         return all_data
     end
 
 end
 
-"""
-json = File.read('./../config/config.json')
-obj = JSON.parse(json)
-db = Database.new(obj)
-db.connect
-db.create_db
+# """
 
-data = File.read('./../data/modify.json')
-data = JSON.parse(data)
-db.populate_db(data)
-"""
+# #{"username": "Aaditya", "uid": "3241", "course": "B.Tech", "sec": "1", "branch": "Mechanical Engineering", "year": "3", "name": "Aaditya Paliwal"}
+# """
